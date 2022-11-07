@@ -185,6 +185,15 @@ namespace Pizza_Oefening
                 NonveggieX = 0;
             }
 
+            //Pas slider aan
+            SldMargarita.Value = MargaritaX;
+            SldSucuk.Value = SucukX;
+            SldChampignons.Value = ChampignonsX;
+            SldHawaii.Value = HawaiiX;
+            SldDoner.Value = DonerX;
+            SldVeggie.Value = VeggieX;
+            SldNonveggie.Value = NonveggieX;
+
             //Toon Nummers
             TxtMargarita.Text = MargaritaX.ToString();
             TxtSucuk.Text = SucukX.ToString();
@@ -193,6 +202,75 @@ namespace Pizza_Oefening
             TxtDoner.Text = DonerX.ToString();
             TxtVeggie.Text = VeggieX.ToString();
             TxtNonveggie.Text = NonveggieX.ToString();
+        }
+
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            Slider slider = (Slider)sender;
+
+            switch (slider.Name)
+            {
+                case "SldMargarita":
+                    {
+                        MargaritaX = Convert.ToInt16(slider.Value);
+                        break;
+                    }
+                case "SldSucuk":
+                    {
+                        SucukX = Convert.ToInt16(slider.Value);
+                        break;
+                    }
+                case "SldChampignons":
+                    {
+                        ChampignonsX = Convert.ToInt16(slider.Value);
+                        break;
+                    }
+                case "SldHawaii":
+                    {
+                        HawaiiX = Convert.ToInt16(slider.Value);
+                        break;
+                    }
+                case "SldDoner":
+                    {
+                        DonerX = Convert.ToInt16(slider.Value);
+                        break;
+                    }
+                case "SldVeggie":
+                    {
+                        VeggieX = Convert.ToInt16(slider.Value);
+                        break;
+                    }
+                case "SldNonveggie":
+                    {
+                        NonveggieX = Convert.ToInt16(slider.Value);
+                        break;
+                    }
+            }
+
+            RefreshValues();
+        }
+
+        private void Txtbox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox TXT = (TextBox)sender;
+
+            switch (TXT.Name)
+            {
+                case "TxtMargarita":
+                    {
+                        //Fout procedure
+                        bool Gelukt = int.TryParse(TXT.Text, out MargaritaX);
+                        if (!Gelukt)
+                        {
+                            TxtMargarita.Text = MargaritaX.ToString();
+                            break;
+                        }
+
+                        //Verander waarde
+                        RefreshValues();
+                        break;
+                    }
+            }
         }
     }
 }

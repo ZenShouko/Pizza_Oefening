@@ -43,10 +43,10 @@
             <TextBlock Text="Pizza's:"/>
             <DockPanel Margin="0, 10">
                 <Button x:Name="BtnMargaritaMin" Click="PizzaButton_Click" Content="-" Margin="0, 0, 2, 0"/>
-                <TextBox x:Name="TxtMargarita" Text=" 0" Margin="0, 0, 2, 0"/>
+                <TextBox LostFocus="Txtbox_LostFocus" x:Name="TxtMargarita" Text=" 0" Margin="0, 0, 2, 0"/>
                 <Button x:Name="BtnMargaritaPlus"  Click="PizzaButton_Click" Content="+" Margin="0, 0, 2, 0"/>
                 <TextBlock Text="Margarita (€6)" Margin="0, 0, 2, 0"/>
-                <Slider x:Name="SldMargarita" Maximum="10" Width="100" 
+                <Slider x:Name="SldMargarita" Maximum="10" Width="100" ValueChanged="Slider_ValueChanged" 
                         IsSnapToTickEnabled="True" HorizontalAlignment="Right"/>
             </DockPanel>
             <DockPanel Margin="0, 10">
@@ -54,43 +54,51 @@
                 <TextBox x:Name="TxtSucuk" Text=" 0" Margin="0, 0, 2, 0"/>
                 <Button x:Name="BtnSucukPlus"  Click="PizzaButton_Click" Content="+" Margin="0, 0, 2, 0"/>
                 <TextBlock Text="Sucuk (€7)" Margin="0, 0, 2, 0" />
-                <Slider x:Name="SldSucuk" Maximum="10" Width="100" IsSnapToTickEnabled="True" HorizontalAlignment="Right"/>
+                <Slider x:Name="SldSucuk" Maximum="10" Width="100" IsSnapToTickEnabled="True" ValueChanged="Slider_ValueChanged" HorizontalAlignment="Right"/>
             </DockPanel>
             <DockPanel Margin="0, 10">
                 <Button x:Name="BtnChampignonsMin" Click="PizzaButton_Click" Content="-" Margin="0, 0, 2, 0"/>
                 <TextBox x:Name="TxtChampignons" Text=" 0" Margin="0, 0, 2, 0"/>
                 <Button x:Name="BtnChampignonsPlus" Click="PizzaButton_Click" Content="+" Margin="0, 0, 2, 0"/>
                 <TextBlock Text="Champignons (€6,5)" Margin="0, 0, 2, 0" />
-                <Slider x:Name="SldChampignons" Maximum="10" Width="100" IsSnapToTickEnabled="True" HorizontalAlignment="Right"/>
+                <Slider x:Name="SldChampignons" ValueChanged="Slider_ValueChanged" Maximum="10" Width="100" IsSnapToTickEnabled="True" HorizontalAlignment="Right"/>
             </DockPanel>
             <DockPanel Margin="0, 10">
                 <Button x:Name="BtnHawaiiMin" Click="PizzaButton_Click" Content="-" Margin="0, 0, 2, 0"/>
                 <TextBox x:Name="TxtHawaii" Text=" 0" Margin="0, 0, 2, 0"/>
                 <Button x:Name="BtnHawaiiPlus" Click="PizzaButton_Click" Content="+" Margin="0, 0, 2, 0"/>
                 <TextBlock Text="Hawaii (€8)" Margin="0, 0, 2, 0" />
-                <Slider x:Name="SldHawaii" Maximum="10" Width="100" IsSnapToTickEnabled="True" HorizontalAlignment="Right"/>
+                <Slider x:Name="SldHawaii" ValueChanged="Slider_ValueChanged" Maximum="10" Width="100" IsSnapToTickEnabled="True" HorizontalAlignment="Right"/>
             </DockPanel>
             <DockPanel Margin="0, 10">
                 <Button x:Name="BtnDonerMin" Click="PizzaButton_Click" Content="-" Margin="0, 0, 2, 0"/>
                 <TextBox x:Name="TxtDoner" Text=" 0" Margin="0, 0, 2, 0"/>
                 <Button x:Name="BtnDonerPlus" Click="PizzaButton_Click" Content="+" Margin="0, 0, 2, 0"/>
                 <TextBlock Text="Doner (€8,5)" Margin="0, 0, 2, 0" />
-                <Slider x:Name="SldDoner" Maximum="10" Width="100" IsSnapToTickEnabled="True" HorizontalAlignment="Right"/>
+                <Slider x:Name="SldDoner" ValueChanged="Slider_ValueChanged" Maximum="10" Width="100" IsSnapToTickEnabled="True" HorizontalAlignment="Right"/>
             </DockPanel>
             <DockPanel Margin="0, 10">
                 <Button x:Name="BtnVeggieMin" Click="PizzaButton_Click" Content="-" Margin="0, 0, 2, 0"/>
                 <TextBox x:Name="TxtVeggie" Text=" 0" Margin="0, 0, 2, 0"/>
                 <Button x:Name="BtnVeggiePlus" Click="PizzaButton_Click" Content="+" Margin="0, 0, 2, 0"/>
                 <TextBlock Text="Veggie (€12,5)" Margin="0, 0, 2, 0" />
-                <Slider x:Name="SldVeggie" Maximum="10" Width="100" IsSnapToTickEnabled="True" HorizontalAlignment="Right"/>
+                <Slider x:Name="SldVeggie" ValueChanged="Slider_ValueChanged" Maximum="10" Width="100" IsSnapToTickEnabled="True" HorizontalAlignment="Right"/>
             </DockPanel>
             <DockPanel Margin="0, 10">
                 <Button x:Name="BtnNonveggieMin" Click="PizzaButton_Click" Content="-" Margin="0, 0, 2, 0"/>
                 <TextBox x:Name="TxtNonveggie" Text=" 0" Margin="0, 0, 2, 0"/>
                 <Button x:Name="BtnNonveggiePlus" Click="PizzaButton_Click" Content="+" Margin="0, 0, 2, 0"/>
                 <TextBlock Text="Non-Veggie (€5)" Margin="0, 0, 2, 0" />
-                <Slider x:Name="SldNonveggie" Maximum="10" Width="100" IsSnapToTickEnabled="True" HorizontalAlignment="Right"/>
+                <Slider x:Name="SldNonveggie" ValueChanged="Slider_ValueChanged" Maximum="10" Width="100" IsSnapToTickEnabled="True" HorizontalAlignment="Right"/>
             </DockPanel>
+        </StackPanel>
+
+        <!--Column 2-->
+        <StackPanel Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center">
+            <CheckBox x:Name="ChkMozzarella" Content="Extra Mozzarella" IsChecked="False" Margin="10"/>
+            <CheckBox x:Name="ChkSalami" Content="Extra Salami" IsChecked="False"  Margin="10"/>
+            <CheckBox x:Name="ChkAnjovis" Content="Extra Anjovis" IsChecked="False"  Margin="10"/>
+            <CheckBox x:Name="ChkArtisjok" Content="Extra Artisjok" IsChecked="False"  Margin="10"/>
         </StackPanel>
     </Grid>
 </Window>
