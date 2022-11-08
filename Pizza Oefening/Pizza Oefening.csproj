@@ -95,10 +95,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Pizza.png" />
+    <Resource Include="TextFile1.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="TextFile1.txt" />
+    <Resource Include="Pizza_Images\Pizza1.png" />
+    <Resource Include="Pizza_Images\Pizza2.png" />
+    <Resource Include="Pizza_Images\Pizza3.jpg" />
+    <Resource Include="Pizza_Images\Pizza4.jpg" />
+    <Resource Include="Pizza_Images\Pizza5.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

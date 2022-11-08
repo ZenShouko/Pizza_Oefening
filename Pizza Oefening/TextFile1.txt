@@ -6,3 +6,5 @@
 5) Doner		€8,5
 6) Veggie		€12,5
 7) Non-Veggie	€5
+
+Alle toppings aan €0,5

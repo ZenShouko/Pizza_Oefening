@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pizza_Oefening"
         mc:Ignorable="d"
-        Title="MainWindow" Height="auto" Width="auto" SizeToContent="WidthAndHeight" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-    <Grid Height="400" Width="700">
+        Title="Bruno's Pizzas" Height="auto" Width="auto" SizeToContent="WidthAndHeight" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid Height="400" Width="750">
         <!--Definitions-->
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1.3*"/>
-            <ColumnDefinition Width="1.6*"/>
+            <ColumnDefinition Width="1.2*"/>
+            <ColumnDefinition Width="1.2*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -19,8 +19,8 @@
         </Grid.RowDefinitions>
         
         <!-->Header-->
-        <TextBlock Text="Pizza's bij Bruno" Margin="10"/>
-        <Image Source="Pizza.png" Width="auto" Height="60" HorizontalAlignment="Right" Grid.Column="2"/>
+        <TextBlock Text="Pizza's bij Bruno" Margin="10" FontSize="20" TextDecorations="Underline"/>
+        <Image x:Name="ImgPizza" Source="/Pizza_Images/Pizza1.png" Width="auto" Height="60" HorizontalAlignment="Right" Grid.Column="2"/>
         
         <!--Column 0-->
         <StackPanel Orientation="Vertical" Grid.Row="1" Margin="5" HorizontalAlignment="Stretch">
@@ -37,13 +37,19 @@
             <TextBlock Text="Postcode:"/>
             <TextBox x:Name="TxtPostcode" Padding="1" Margin="0, 5, 0, 10"/>
         </StackPanel>
+            <DockPanel LastChildFill="False" HorizontalAlignment="Stretch" Grid.Row="1" VerticalAlignment="Bottom">
+                <CheckBox x:Name="ChkSkipGegevens" Content="Niet van belang." FontSize="14" IsChecked="False" Checked="ChkSkipGegevens_Check" Unchecked="ChkSkipGegevens_Check" Margin="5, 0"/>
+                <Button x:Name="BtnWissen" Content="Leeg" DockPanel.Dock="Right" Padding="2" Margin="5" Click="BtnWissen_Click"/>
+                <Button x:Name="BtnTerug" Content="↺" FontSize="14" FontWeight="DemiBold" DockPanel.Dock="Right" Padding="2" Margin="5" Click="BtnTerug_Click"/>
+            </DockPanel>
         
         <!--Column 1-->
-        <StackPanel Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch">
+        <StackPanel Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" HorizontalAlignment="Stretch" Margin="0, 20, 0, 0">
+            <!--Pizzas-->
             <TextBlock Text="Pizza's:"/>
             <DockPanel Margin="0, 10">
                 <Button x:Name="BtnMargaritaMin" Click="PizzaButton_Click" Content="-" Margin="0, 0, 2, 0"/>
-                <TextBox LostFocus="Txtbox_LostFocus" x:Name="TxtMargarita" Text=" 0" Margin="0, 0, 2, 0"/>
+                <TextBox LostFocus="Txtbox_LostFocus" KeyDown="Windows_KeyDown" TextChanged="PizzaTextbox_Changed" x:Name="TxtMargarita" MaxLength="2" Text="0" Width="25" HorizontalContentAlignment="Center" FontWeight="DemiBold" Margin="0, 0, 2, 0"/>
                 <Button x:Name="BtnMargaritaPlus"  Click="PizzaButton_Click" Content="+" Margin="0, 0, 2, 0"/>
                 <TextBlock Text="Margarita (€6)" Margin="0, 0, 2, 0"/>
                 <Slider x:Name="SldMargarita" Maximum="10" Width="100" ValueChanged="Slider_ValueChanged" 
@@ -51,54 +57,63 @@
             </DockPanel>
             <DockPanel Margin="0, 10">
                 <Button x:Name="BtnSucukMin"  Click="PizzaButton_Click" Content="-" Margin="0, 0, 2, 0"/>
-                <TextBox x:Name="TxtSucuk" Text=" 0" Margin="0, 0, 2, 0"/>
+                <TextBox x:Name="TxtSucuk" KeyDown="Windows_KeyDown" TextChanged="PizzaTextbox_Changed" LostFocus="Txtbox_LostFocus" Text="0" MaxLength="2"  Width="25" HorizontalContentAlignment="Center" FontWeight="DemiBold" Margin="0, 0, 2, 0"/>
                 <Button x:Name="BtnSucukPlus"  Click="PizzaButton_Click" Content="+" Margin="0, 0, 2, 0"/>
                 <TextBlock Text="Sucuk (€7)" Margin="0, 0, 2, 0" />
                 <Slider x:Name="SldSucuk" Maximum="10" Width="100" IsSnapToTickEnabled="True" ValueChanged="Slider_ValueChanged" HorizontalAlignment="Right"/>
             </DockPanel>
             <DockPanel Margin="0, 10">
                 <Button x:Name="BtnChampignonsMin" Click="PizzaButton_Click" Content="-" Margin="0, 0, 2, 0"/>
-                <TextBox x:Name="TxtChampignons" Text=" 0" Margin="0, 0, 2, 0"/>
+                <TextBox x:Name="TxtChampignons" KeyDown="Windows_KeyDown" TextChanged="PizzaTextbox_Changed" LostFocus="Txtbox_LostFocus" Text="0" MaxLength="2"  Width="25" HorizontalContentAlignment="Center" FontWeight="DemiBold" Margin="0, 0, 2, 0"/>
                 <Button x:Name="BtnChampignonsPlus" Click="PizzaButton_Click" Content="+" Margin="0, 0, 2, 0"/>
                 <TextBlock Text="Champignons (€6,5)" Margin="0, 0, 2, 0" />
                 <Slider x:Name="SldChampignons" ValueChanged="Slider_ValueChanged" Maximum="10" Width="100" IsSnapToTickEnabled="True" HorizontalAlignment="Right"/>
             </DockPanel>
             <DockPanel Margin="0, 10">
                 <Button x:Name="BtnHawaiiMin" Click="PizzaButton_Click" Content="-" Margin="0, 0, 2, 0"/>
-                <TextBox x:Name="TxtHawaii" Text=" 0" Margin="0, 0, 2, 0"/>
+                <TextBox x:Name="TxtHawaii" KeyDown="Windows_KeyDown" TextChanged="PizzaTextbox_Changed" LostFocus="Txtbox_LostFocus" Text="0" MaxLength="2"  Width="25" HorizontalContentAlignment="Center" FontWeight="DemiBold" Margin="0, 0, 2, 0"/>
                 <Button x:Name="BtnHawaiiPlus" Click="PizzaButton_Click" Content="+" Margin="0, 0, 2, 0"/>
                 <TextBlock Text="Hawaii (€8)" Margin="0, 0, 2, 0" />
                 <Slider x:Name="SldHawaii" ValueChanged="Slider_ValueChanged" Maximum="10" Width="100" IsSnapToTickEnabled="True" HorizontalAlignment="Right"/>
             </DockPanel>
             <DockPanel Margin="0, 10">
                 <Button x:Name="BtnDonerMin" Click="PizzaButton_Click" Content="-" Margin="0, 0, 2, 0"/>
-                <TextBox x:Name="TxtDoner" Text=" 0" Margin="0, 0, 2, 0"/>
+                <TextBox x:Name="TxtDoner" KeyDown="Windows_KeyDown" TextChanged="PizzaTextbox_Changed" LostFocus="Txtbox_LostFocus" Text="0" MaxLength="2"  Width="25" HorizontalContentAlignment="Center" FontWeight="DemiBold" Margin="0, 0, 2, 0"/>
                 <Button x:Name="BtnDonerPlus" Click="PizzaButton_Click" Content="+" Margin="0, 0, 2, 0"/>
                 <TextBlock Text="Doner (€8,5)" Margin="0, 0, 2, 0" />
                 <Slider x:Name="SldDoner" ValueChanged="Slider_ValueChanged" Maximum="10" Width="100" IsSnapToTickEnabled="True" HorizontalAlignment="Right"/>
             </DockPanel>
             <DockPanel Margin="0, 10">
                 <Button x:Name="BtnVeggieMin" Click="PizzaButton_Click" Content="-" Margin="0, 0, 2, 0"/>
-                <TextBox x:Name="TxtVeggie" Text=" 0" Margin="0, 0, 2, 0"/>
+                <TextBox x:Name="TxtVeggie" KeyDown="Windows_KeyDown" TextChanged="PizzaTextbox_Changed" LostFocus="Txtbox_LostFocus" Text="0" MaxLength="2"  Width="25" HorizontalContentAlignment="Center" FontWeight="DemiBold" Margin="0, 0, 2, 0"/>
                 <Button x:Name="BtnVeggiePlus" Click="PizzaButton_Click" Content="+" Margin="0, 0, 2, 0"/>
                 <TextBlock Text="Veggie (€12,5)" Margin="0, 0, 2, 0" />
                 <Slider x:Name="SldVeggie" ValueChanged="Slider_ValueChanged" Maximum="10" Width="100" IsSnapToTickEnabled="True" HorizontalAlignment="Right"/>
             </DockPanel>
             <DockPanel Margin="0, 10">
                 <Button x:Name="BtnNonveggieMin" Click="PizzaButton_Click" Content="-" Margin="0, 0, 2, 0"/>
-                <TextBox x:Name="TxtNonveggie" Text=" 0" Margin="0, 0, 2, 0"/>
+                <TextBox x:Name="TxtNonveggie" KeyDown="Windows_KeyDown" TextChanged="PizzaTextbox_Changed" LostFocus="Txtbox_LostFocus" Text="0" MaxLength="2"  Width="25" HorizontalContentAlignment="Center" FontWeight="DemiBold" Margin="0, 0, 2, 0"/>
                 <Button x:Name="BtnNonveggiePlus" Click="PizzaButton_Click" Content="+" Margin="0, 0, 2, 0"/>
                 <TextBlock Text="Non-Veggie (€5)" Margin="0, 0, 2, 0" />
                 <Slider x:Name="SldNonveggie" ValueChanged="Slider_ValueChanged" Maximum="10" Width="100" IsSnapToTickEnabled="True" HorizontalAlignment="Right"/>
             </DockPanel>
         </StackPanel>
+            <!--Toppings-->
+            <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
+            <DockPanel HorizontalAlignment="Stretch">
+                <CheckBox x:Name="ChkMozzarella" Content="Extra Mozzarella" IsChecked="False" Margin="10"/>
+                <CheckBox x:Name="ChkSalami" Content="Extra Salami" IsChecked="False"  Margin="10" HorizontalAlignment="Right"/>
+            </DockPanel>
+            <DockPanel>
+                <CheckBox x:Name="ChkAnjovis" Content="Extra Anjovis" IsChecked="False"  Margin="10"/>
+                <CheckBox x:Name="ChkArtisjok" Content="Extra Artisjok" IsChecked="False"  Margin="10" HorizontalAlignment="Right"/>
+            </DockPanel>
+        </StackPanel>
 
         <!--Column 2-->
-        <StackPanel Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center">
-            <CheckBox x:Name="ChkMozzarella" Content="Extra Mozzarella" IsChecked="False" Margin="10"/>
-            <CheckBox x:Name="ChkSalami" Content="Extra Salami" IsChecked="False"  Margin="10"/>
-            <CheckBox x:Name="ChkAnjovis" Content="Extra Anjovis" IsChecked="False"  Margin="10"/>
-            <CheckBox x:Name="ChkArtisjok" Content="Extra Artisjok" IsChecked="False"  Margin="10"/>
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="2" Margin="0" HorizontalAlignment="Center">
+            <TextBox x:Name="TxtOverzicht" Width="200" Height="300" VerticalScrollBarVisibility="Auto" IsReadOnly="True" FontSize="14" FontFamily="Courier New" TextWrapping="Wrap"/>
+            <Button x:Name="BtnBestel" Content="Bestel" Padding="3" Width="99" Click="BtnBestel_Click" FontWeight="DemiBold" Cursor="Hand" Margin="10"/>
         </StackPanel>
     </Grid>
 </Window>
